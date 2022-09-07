@@ -1,23 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Card from "./components/Card.jsx"
+import { useState, useEffect } from "react"
+
+
+
+
 
 function App() {
+
+  const [data, setData] = useState([]);
+  // const [rates, setRates] = useState([])
+
+  useEffect(() => {
+    fetch("https://v6.exchangerate-api.com/v6/c6ba42697f9447f9e7cf8b2c/latest/USD")
+      .then(res => res.json())
+      .then((e) => setData(e.conversion_rates))
+
+
+  }, [])
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+<Card data={data}  />
+
+
+
+
+
+
+
     </div>
   );
 }
