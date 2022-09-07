@@ -38,9 +38,9 @@ function Card({ data }) {
                     let obj = {
                         [rate.to]: (a.conversion_rates[rate.to] * input).toFixed(2)
                     }
-                    commons.map(e => {
+                    commons.map(e =>
                         obj[e] = (a.conversion_rates[e] * input).toFixed(2)
-                    })
+                    )
 
                     setResult(obj)
                 })
